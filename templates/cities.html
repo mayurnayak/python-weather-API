@@ -1,0 +1,36 @@
+{%extends 'base.html'%}
+
+{%block center%}
+		<h2>Your Cities</h2>
+		{%if error%}
+			<div class="alert alert-info">{{error}}</div>
+		{%endif%}
+		<table class="table table-responsive">
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>Country</th>
+					<th>Zip Code</th>
+					<th>City ID</th>
+					<th>current</th>
+
+					<th></th>
+					<td></td>
+				</tr>
+			</thead>
+			<tbody>
+			{%for city in cities%}
+			<tr>
+			<td>{{city.name}}</td>
+			<td>{{city.country}}</td>
+			<td>{{city.zip_code}}</td>
+			<td>{{city.wid_city}}</td>
+			<td>{%if city.current%}Yes{%else%}No{%endif%}</td>
+			<td>{{city.date_added}}</td>
+			<td><a href="{%url 'make_current' city.city_id%}">Make Current</a></td>
+			<td><a href="{%url 'delete_city' city.city_id%}">Delete</a></td>
+			</tr>
+			{%endfor%}
+			</tbody>
+		</table>
+{%endblock%}

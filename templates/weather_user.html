@@ -1,0 +1,57 @@
+{%extends 'base.html'%}
+
+{%block center%}
+	{%if error%}
+		<div class="alert -info">
+			{{error}}
+	{%else%}
+		<div class="panel panel-primary">
+			<div class="panel-header">
+				My Weather
+			</div>
+			<div class="panel-body">
+
+				<table class="table table-responsive">
+					<tbody>
+						<tr>
+							<td>Country</td>
+							<td>{{weather.sys.country}}</td>
+							<td>City</td>
+							<td>{{weather.name}}</td>
+						</tr>
+						<tr>
+							<td>Sunrise</td>
+							<td>{{weather.sys.sunrise}}</td>
+							<td>Sunset</td>
+							<td>{{weather.sys.sunset}}</td>
+						</tr>
+						<tr>
+							<td>Pressure</td>
+							<td>{{weather.main.pressure}}</td>
+							<td>Humidity</td>
+							<td>{{weather.main.humidity}}</td>
+						</tr>
+						<tr>
+							<td>Temp</td>
+							<td>{{weather.main.temp}}</td>
+							<td>Clouds</td>
+							<td>{{weather.clouds.all}}</td>
+						</tr>
+						<tr>
+							<td>Low</td>
+							<td>{{weather.main.temp_min}}</td>
+							<td>High</td>
+							<td>{{weather.main.temp_max}}</td>
+						</tr>
+						<tr>
+							<td>Visibility</td>
+							<td>{{weather.visibility}}</td>
+							<td>Wind</td>
+							<td>{{weather.wind.speed}}, {{weather.wind.deg}}</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	{%endif%}
+{%endblock%}
